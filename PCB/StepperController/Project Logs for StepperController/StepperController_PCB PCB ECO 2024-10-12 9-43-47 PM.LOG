@@ -1,0 +1,21 @@
+Change Component Footprint: Designator=L1 Old Footprint=WE-PD_1050P New Footprint=WE-PD_1050P
+Added Component: Designator=J3(2.54-2PLTDK)
+Added Component: Designator=J4(2.54-2PLTDK)
+Add Component: Footprint Not Found RES 1206_3216
+Add Component: Footprint Not Found RES 1206_3216
+Added Pin To Net: NetName=OA1 Pin=J3-1
+Added Pin To Net: NetName=OA1 Pin=J3-1
+Added Pin To Net: NetName=OA2 Pin=J3-2
+Added Pin To Net: NetName=OA2 Pin=J3-2
+Added Pin To Net: NetName=OB1 Pin=J4-1
+Added Pin To Net: NetName=OB1 Pin=J4-1
+Added Pin To Net: NetName=OB2 Pin=J4-2
+Added Pin To Net: NetName=OB2 Pin=J4-2
+Add Pin To Net: Unknown Pin: Pin R15-1
+Add Pin To Net: Unknown Pin: Pin R15-2
+Add Pin To Net: Unknown Pin: Pin R16-1
+Add Pin To Net: Unknown Pin: Pin R16-2
+Added Member To Class: ClassName=Stepper Member=Component J3 XY115A-5.0-2P
+Added Member To Class: ClassName=Stepper Member=Component J4 XY115A-5.0-2P
+Add Class Member: Failed to add class member : Component R15 150m
+Add Class Member: Failed to add class member : Component R16 150m

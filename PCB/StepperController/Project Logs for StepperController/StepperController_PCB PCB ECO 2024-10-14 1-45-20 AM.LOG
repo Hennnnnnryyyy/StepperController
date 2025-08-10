@@ -1,0 +1,22 @@
+Removed Pin From Net: NetName=GPIO0 Pin=C33-1
+Removed Pin From Net: NetName=NetC35_1 Pin=IC1-28
+Removed Pin From Net: NetName=NetC36_1 Pin=IC1-29
+Removed Pin From Net: NetName=NetC34_1 Pin=IC1-30
+Removed Pin From Net: NetName=NetC37_1 Pin=IC1-31
+Removed Pin From Net: NetName=NetC40_1 Pin=IC1-32
+Removed Pin From Net: NetName=NetC38_1 Pin=IC1-33
+Removed Pin From Net: NetName=NetC39_1 Pin=IC1-34
+Removed Pin From Net: NetName=GPIO0 Pin=R22-2
+Removed Pin From Net: NetName=GPIO0 Pin=R23-1
+Added Pin To Net: NetName=NetC35_1 Pin=IC1-29
+Added Pin To Net: NetName=NetC36_1 Pin=IC1-30
+Added Pin To Net: NetName=NetC34_1 Pin=IC1-31
+Added Pin To Net: NetName=NetC37_1 Pin=IC1-32
+Added Pin To Net: NetName=NetC40_1 Pin=IC1-33
+Added Pin To Net: NetName=NetC38_1 Pin=IC1-34
+Added Pin To Net: NetName=NetC39_1 Pin=IC1-35
+Added Pin To Net: NetName=NetC33_1 Pin=C33-1
+Added Pin To Net: NetName=NetC33_1 Pin=IC1-28
+Added Pin To Net: NetName=NetC33_1 Pin=R22-2
+Added Pin To Net: NetName=NetC33_1 Pin=R23-1
+Added Net: Name=NetC33_1

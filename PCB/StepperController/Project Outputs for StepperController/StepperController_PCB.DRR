@@ -1,0 +1,28 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: StepperController_PCB.PcbDoc   2024-10-14  4:49:21 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : StepperController_PCB-RoundHoles.TXT
+ASCII SlotHoles File : StepperController_PCB-SlotHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      8mil (0.201mm)                                            Round             9         PTH        0.35inch (8.80mm)
+T2      12mil (0.3mm)                                             Round             174       PTH        33.20inch (843.17mm)
+T3      39mil (1.001mm)                                           Round             9         PTH        3.16inch (80.20mm)
+T4      39mil (1.001mm)                                           Slot              4         PTH        10.46inch (265.80mm)
+T5      47mil (1.191mm)                                           Round             8         PTH        0.99inch (25.24mm)
+T6      51mil (1.3mm)                                             Round             6         PTH        1.03inch (26.16mm)
+T7      55mil (1.4mm)                                             Round             8         PTH        1.73inch (44.00mm)
+T8      55mil (1.4mm)                                             Slot              2         PTH        1.07inch (27.19mm)
+T9      59mil (1.501mm)                                           Round             2         PTH        2.68inch (67.96mm)
+T10     79mil (1.999mm)                                           Slot              1         PTH        0.51inch (13.00mm)
+T11     94mil (2.38mm)                                            Round             2         PTH        0.47inch (12.04mm)
+T12     126mil (3.2mm)                                            Round             4         PTH        8.90inch (226.00mm)
+T13     67mil (1.699mm)                                           Round             1         NPTH       0.00inch (0.00mm)
+T14     71mil (1.801mm)                                           Round             1         NPTH       0.00inch (0.00mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              231
+
+Total Processing Time (hh:mm:ss) : 00:00:00

@@ -1,0 +1,465 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD21\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2024-10-14</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">4:41:25 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc" class="file"><acronym title="C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc">C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">43</td></tr>
+</table>
+</td>
+</table><a name="IDS3KSTMIFANY4LFEUNPWRUIA5UKL4V2F2EZLEVIOFEGDONVTO4EHE"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCOV5NCTX1FSJMYSIWSMWYK0IPLNKOARUSSGCX4GT4SBSXRSIE2XF">Clearance Constraint (Gap=0.15mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHMIEKT0LAFHQPF5D4YYYWUU3ILDKO0JPPA5HJXDGP23HQIJYE15D">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHFNRJK3G5YN3PLOAGBC5GF1W1ESWSNLD31Q3KRJV1ITA3BFMUMYN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0W0TCTWO5ZZMY4J43P24SIB0EGY4MOSNHA1BIKLMO4OHOKIIEII">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMVWS4LLOCS45HL2NJWFCUG34OBBSXQJNLWTEQFL4M1DXYV2V01XM">Width Constraint (Min=0.15mm) (Max=20mm) (Preferred=0.2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUGHB4M2S0PZ1HWJ3JSLDJUTBKBGEAUUUAYLFAKIDXXMTVKCRN5TH">Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLFCAV0QI2GMMIOMO3Y3HXNWE2N41KGWK24FSSFBQSNVL343SJHGC">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">11</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4IB2FABF4SGRE0EPTHWXWMUETUXMLJ5AY0L4ULDHX5YNWTUZ0FI">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0LIOFRPN1I1QIMPRLSIEESOUOGLCOUE5LU3HFSOHLEIGQ220E3JF">Minimum Solder Mask Sliver (Gap=0.254mm) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDY1NSCDXW3ELRIKDZQY3AF2CXZEJP5CDQY5BPDAHS2ESQRVR5PSRL">Silk To Solder Mask (Clearance=0.254mm) (Disabled)(IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2PRKFI2OXDJ0JWTA5PD5IXQ1WDCSYQXMANKXUMF4FTEZHFFMZ5VJ">Silk to Silk (Clearance=0.254mm) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHFKKXN2ESKK2OZHFDCU1JJAO4CDVHMB4J4KXNRHIW32CEH0UCT0D">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDN0HOYVGWC3BPMSC3BPI1LXFNWKU0XEDPBL4FB5JABGUNUWHQG52I">Board Clearance Constraint (Gap=0mm) (All)</a></td>
+<td class="column2">32</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBGWP1UTUNCIAB5VD5OFDTOIWGNWIR3IRVUJBTBDPACPGRYA3VNOP">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">43</td>
+</tr>
+</table><br><a name="IDLFCAV0QI2GMMIOMO3Y3HXNWE2N41KGWK24FSSFBQSNVL343SJHGC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1280.871mil|Location2.X=1419.916mil|Location1.Y=2647.013mil|Location2.Y=2786.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1280.871mil|Location2.X=1419.916mil|Location1.Y=2647.013mil|Location2.Y=2786.058mil|Absolute=True">Hole Size Constraint: (3.5mm &gt; 2.54mm) Pad ENC1-3(34.3mm,69mm) on Multi-Layer Actual Slot Hole Height = 3.5mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1729.69mil|Location2.X=1868.735mil|Location1.Y=2647.013mil|Location2.Y=2786.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1729.69mil|Location2.X=1868.735mil|Location1.Y=2647.013mil|Location2.Y=2786.058mil|Absolute=True">Hole Size Constraint: (3.5mm &gt; 2.54mm) Pad ENC1-4(45.7mm,69mm) on Multi-Layer Actual Slot Hole Height = 3.5mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1078.115mil|Location2.X=1205.349mil|Location1.Y=5487.564mil|Location2.Y=5614.798mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1078.115mil|Location2.X=1205.349mil|Location1.Y=5487.564mil|Location2.Y=5614.798mil|Absolute=True">Hole Size Constraint: (3.2mm &gt; 2.54mm) Pad Free-100(29mm,141mm) on Multi-Layer Actual Hole Size = 3.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1078.115mil|Location2.X=1205.349mil|Location1.Y=1078.115mil|Location2.Y=1205.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1078.115mil|Location2.X=1205.349mil|Location1.Y=1078.115mil|Location2.Y=1205.349mil|Absolute=True">Hole Size Constraint: (3.2mm &gt; 2.54mm) Pad Free-100(29mm,29mm) on Multi-Layer Actual Hole Size = 3.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3322.21mil|Location2.X=3449.444mil|Location1.Y=5487.564mil|Location2.Y=5614.798mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3322.21mil|Location2.X=3449.444mil|Location1.Y=5487.564mil|Location2.Y=5614.798mil|Absolute=True">Hole Size Constraint: (3.2mm &gt; 2.54mm) Pad Free-101(86mm,141mm) on Multi-Layer Actual Hole Size = 3.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3322.21mil|Location2.X=3449.444mil|Location1.Y=1078.115mil|Location2.Y=1205.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3322.21mil|Location2.X=3449.444mil|Location1.Y=1078.115mil|Location2.Y=1205.349mil|Absolute=True">Hole Size Constraint: (3.2mm &gt; 2.54mm) Pad Free-101(86mm,29mm) on Multi-Layer Actual Hole Size = 3.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1269.06mil|Location2.X=1506.531mil|Location1.Y=3247.406mil|Location2.Y=3484.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1269.06mil|Location2.X=1506.531mil|Location1.Y=3247.406mil|Location2.Y=3484.877mil|Absolute=True">Hole Size Constraint: (6mm &gt; 2.54mm) Pad Free-8(35.25mm,85.5mm) on Multi-Layer Actual Slot Hole Width = 6mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1367.485mil|Location2.X=1604.956mil|Location1.Y=4763.154mil|Location2.Y=5000.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1367.485mil|Location2.X=1604.956mil|Location1.Y=4763.154mil|Location2.Y=5000.625mil|Absolute=True">Hole Size Constraint: (6mm &gt; 2.54mm) Pad Free-8(37.75mm,124mm) on Multi-Layer Actual Slot Hole Width = 6mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1967.879mil|Location2.X=2559.68mil|Location1.Y=3050.556mil|Location2.Y=3642.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1967.879mil|Location2.X=2559.68mil|Location1.Y=3050.556mil|Location2.Y=3642.357mil|Absolute=True">Hole Size Constraint: (15mm &gt; 2.54mm) Pad Free-8(57.5mm,85mm) on Multi-Layer Actual Slot Hole Width = 15mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2922.603mil|Location2.X=3160.074mil|Location1.Y=4763.154mil|Location2.Y=5000.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2922.603mil|Location2.X=3160.074mil|Location1.Y=4763.154mil|Location2.Y=5000.625mil|Absolute=True">Hole Size Constraint: (6mm &gt; 2.54mm) Pad Free-8(77.25mm,124mm) on Multi-Layer Actual Slot Hole Width = 6mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3021.029mil|Location2.X=3258.499mil|Location1.Y=3247.406mil|Location2.Y=3484.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3021.029mil|Location2.X=3258.499mil|Location1.Y=3247.406mil|Location2.Y=3484.877mil|Absolute=True">Hole Size Constraint: (6mm &gt; 2.54mm) Pad Free-8(79.75mm,85.5mm) on Multi-Layer Actual Slot Hole Width = 6mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDN0HOYVGWC3BPMSC3BPI1LXFNWKU0XEDPBL4FB5JABGUNUWHQG52I"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.073mil|Location2.X=3594.635mil|Location1.Y=3074.898mil|Location2.Y=3082.459mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.073mil|Location2.X=3594.635mil|Location1.Y=3074.898mil|Location2.Y=3082.459mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Text "?" (78mm,71mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.073mil|Location2.X=3594.635mil|Location1.Y=2051.276mil|Location2.Y=2058.837mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.073mil|Location2.X=3594.635mil|Location1.Y=2051.276mil|Location2.Y=2058.837mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Text "?" (78mm,45mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1293.666mil|Location2.X=1304.759mil|Location1.Y=5703.115mil|Location2.Y=5714.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1293.666mil|Location2.X=1304.759mil|Location1.Y=5703.115mil|Location2.Y=5714.208mil|Absolute=True">Board Outline Clearance(Outline Edge): (0mm &lt; 0.25mm) Between Board Edge And Text "A  A   B  B" (33mm,141mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2295.862mil|Location2.X=2306.954mil|Location1.Y=5701.31mil|Location2.Y=5712.403mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2295.862mil|Location2.X=2306.954mil|Location1.Y=5701.31mil|Location2.Y=5712.403mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.092mm &lt; 0.25mm) Between Board Edge And Text "AABB" (58.456mm,142mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1308.627mil|Location2.X=1319.719mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1308.627mil|Location2.X=1319.719mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (33.38mm,25.2mm)(33.38mm,33.2mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1308.627mil|Location2.X=1319.719mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1308.627mil|Location2.X=1319.719mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (33.38mm,25.2mm)(48.62mm,25.2mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1327.918mil|Location2.X=1339.011mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1327.918mil|Location2.X=1339.011mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (33.87mm,25.2mm)(33.87mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1489.336mil|Location2.X=1500.428mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1489.336mil|Location2.X=1500.428mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (37.97mm,25.2mm)(37.97mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1527.918mil|Location2.X=1539.011mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1527.918mil|Location2.X=1539.011mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (38.95mm,25.2mm)(38.95mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1689.336mil|Location2.X=1700.428mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1689.336mil|Location2.X=1700.428mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (43.05mm,25.2mm)(43.05mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1727.918mil|Location2.X=1739.011mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1727.918mil|Location2.X=1739.011mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (44.03mm,25.2mm)(44.03mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1889.336mil|Location2.X=1900.428mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1889.336mil|Location2.X=1900.428mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (48.13mm,25.2mm)(48.13mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.627mil|Location2.X=1919.72mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.627mil|Location2.X=1919.72mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (48.62mm,25.2mm)(48.62mm,31.635mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.627mil|Location2.X=1919.72mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.627mil|Location2.X=1919.72mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (48.62mm,25.2mm)(48.62mm,33.2mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1938.548mil|Location2.X=1949.641mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1938.548mil|Location2.X=1949.641mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (49.38mm,25.2mm)(49.38mm,33.2mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1938.548mil|Location2.X=1949.641mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1938.548mil|Location2.X=1949.641mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (49.38mm,25.2mm)(64.62mm,25.2mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1957.84mil|Location2.X=1968.932mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1957.84mil|Location2.X=1968.932mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (49.87mm,25.2mm)(49.87mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2119.257mil|Location2.X=2130.349mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2119.257mil|Location2.X=2130.349mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (53.97mm,25.2mm)(53.97mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2157.84mil|Location2.X=2168.932mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2157.84mil|Location2.X=2168.932mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (54.95mm,25.2mm)(54.95mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2319.257mil|Location2.X=2330.349mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2319.257mil|Location2.X=2330.349mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (59.05mm,25.2mm)(59.05mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2357.84mil|Location2.X=2368.932mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2357.84mil|Location2.X=2368.932mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (60.03mm,25.2mm)(60.03mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2519.257mil|Location2.X=2530.35mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2519.257mil|Location2.X=2530.35mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (64.13mm,25.2mm)(64.13mm,31mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2538.548mil|Location2.X=2549.641mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2538.548mil|Location2.X=2549.641mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (64.62mm,25.2mm)(64.62mm,31.635mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2538.548mil|Location2.X=2549.641mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2538.548mil|Location2.X=2549.641mil|Location1.Y=980.674mil|Location2.Y=991.766mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.1mm &lt; 0.25mm) Between Board Edge And Track (64.62mm,25.2mm)(64.62mm,33.2mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2634.802mil|Location2.X=2642.363mil|Location1.Y=973.894mil|Location2.Y=981.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2634.802mil|Location2.X=2642.363mil|Location1.Y=973.894mil|Location2.Y=981.455mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (67.02mm,24.72mm)(67.02mm,32.71mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2871.416mil|Location2.X=2878.978mil|Location1.Y=969.448mil|Location2.Y=977.009mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2871.416mil|Location2.X=2878.978mil|Location1.Y=969.448mil|Location2.Y=977.009mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (67.02mm,24.72mm)(79.04mm,24.72mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2871.416mil|Location2.X=2878.978mil|Location1.Y=969.448mil|Location2.Y=977.009mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2871.416mil|Location2.X=2878.978mil|Location1.Y=969.448mil|Location2.Y=977.009mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (67.02mm,24.72mm)(79.04mm,24.72mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2634.408mil|Location2.X=2641.97mil|Location1.Y=969.448mil|Location2.Y=977.009mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2634.408mil|Location2.X=2641.97mil|Location1.Y=969.448mil|Location2.Y=977.009mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (67mm,24.72mm)(67.02mm,24.72mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2634.015mil|Location2.X=2641.576mil|Location1.Y=973.894mil|Location2.Y=981.455mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2634.015mil|Location2.X=2641.576mil|Location1.Y=973.894mil|Location2.Y=981.455mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (67mm,24.72mm)(67mm,32.71mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.243mil|Location2.X=3114.805mil|Location1.Y=973.697mil|Location2.Y=981.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.243mil|Location2.X=3114.805mil|Location1.Y=973.697mil|Location2.Y=981.259mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (79.02mm,24.71mm)(79.02mm,32.71mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.637mil|Location2.X=3115.198mil|Location1.Y=969.054mil|Location2.Y=976.615mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.637mil|Location2.X=3115.198mil|Location1.Y=969.054mil|Location2.Y=976.615mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (79.02mm,24.71mm)(79.04mm,24.71mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3108.03mil|Location2.X=3115.592mil|Location1.Y=973.697mil|Location2.Y=981.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Henry\Documents\0_My Documents\PCB\StepperController\StepperController_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3108.03mil|Location2.X=3115.592mil|Location1.Y=973.697mil|Location2.Y=981.259mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (79.04mm,24.71mm)(79.04mm,32.71mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
