@@ -27,17 +27,17 @@ void stepperMomentary(int& lastMode) {
     } else if (digitalRead(BTN_REV_PIN)) {
       stepper.move(STEPS_PER_REV * -1000);  // Move a large distance backward
     } else {
-      stepper.move(0);  // Move a large distance forward
+      stepper.move(0);  // Stop the motor when you aren't hitting any button
     }
     if (digitalRead(BTN_STOP_PIN)) {
       stepper.setMaxSpeed(0);
-      stepper.move(0);  // Move a large distance forward
+      stepper.move(0);  // Stop the motor when you hit the stop button
     }
     stepper.run();
 
     if (stepper_mode != lastMode) {
       stepper.setMaxSpeed(0);
-      stepper.move(0);  // Move a large distance forward
+      stepper.move(0);  // Stop the motor when the mode changes
       return;
     }
   }
@@ -63,25 +63,27 @@ void stepperContinous(int& lastMode) {
     } else if (btnCommand == -1) {
       stepper.move(STEPS_PER_REV * -1000);  // Move a large distance backward
     } else {
-      stepper.move(0);  // Move a large distance forward
+      stepper.move(0);  // Stop the motor when there is no btn command
     }
     if (digitalRead(BTN_STOP_PIN)) {
       btnCommand = 0;
       stepper.setMaxSpeed(0);
-      stepper.move(0);  // Move a large distance forward
+      stepper.move(0);  // Stop the motor when you hit the stop button
     }
     stepper.run();
 
     if (stepper_mode != lastMode) {
       stepper.setMaxSpeed(0);
-      stepper.move(0);  // Move a large distance forward
+      stepper.move(0);  // Stop the motor when the mode changes
       return;
     }
   }
 }
 
+
+
 void stepperJog(int& lastMode) {
-  int lastEncoderMode = 0;  // If user pushes encoder button to change settings, reset position. Otherwise if scaling changes, it will rotate erradically.
+  int lastEncoderMode = 0;  // If user pushes encoder button to change settings, reset position. Otherwise if scaling changes, it will rotate erratically.
   stepper.setCurrentPosition(0);
   stepper_setPos = 0;
   while (1) {
@@ -94,12 +96,12 @@ void stepperJog(int& lastMode) {
       stepper.setCurrentPosition(0);
       stepper_setPos = 0;
       stepper.setMaxSpeed(0);
-      stepper.move(0);  // Move a large distance forward
+      stepper.move(0);  // Stop the motor when you hit the stop button
     }
     lastEncoderMode = encoderMode;
     if (stepper_mode != lastMode) {
       stepper.setMaxSpeed(0);
-      stepper.move(0);  // Move a large distance forward
+      stepper.move(0);  // Stop the motor when the mode changes
       return;
     }
   }
@@ -127,7 +129,7 @@ void stepperReciprocate(int& lastMode) {
           stepper_setAccel < 0.05 ? stepper.setAcceleration(99999 * STEPS_PER_REV) : stepper.setAcceleration(stepper_setAccel * STEPS_PER_REV);
           stepper.run();
           if (btn_fwd.risingEdge() || btn_rev.risingEdge()) stopNextCycle = 1;
-          if (digitalRead(BTN_STOP_PIN) || stepper_mode != lastMode) goto here;
+          if (digitalRead(BTN_STOP_PIN) || stepper_mode != lastMode) goto here; //Stops the motion immediately when hitting the stop button or changing modes
         }
 
         stepper.moveTo(0);
@@ -136,13 +138,13 @@ void stepperReciprocate(int& lastMode) {
           stepper_setAccel < 0.05 ? stepper.setAcceleration(99999 * STEPS_PER_REV) : stepper.setAcceleration(stepper_setAccel * STEPS_PER_REV);
           stepper.run();
           if (btn_fwd.risingEdge() || btn_rev.risingEdge()) stopNextCycle = 1;
-          if (digitalRead(BTN_STOP_PIN) || stepper_mode != lastMode) goto here;
+          if (digitalRead(BTN_STOP_PIN) || stepper_mode != lastMode) goto here; //Stops the motion immediately when hitting the stop button or changing modes
         }
 
         cycleCount++;
       }
     }
-here:
+here: //Stops the motion immediately when hitting the stop button or changing modes
     stopNextCycle = 0;
     stepper.setCurrentPosition(0);
     stepper.moveTo(0);
@@ -151,7 +153,7 @@ here:
     if (stepper_mode != lastMode) {
       stepper.setCurrentPosition(0);
       stepper.moveTo(0);
-      stepper.setMaxSpeed(0);
+      stepper.setMaxSpeed(0); // Stop the motor when the mode changes
       return;
     }
   }
