@@ -1,0 +1,17 @@
+.EC12D1524403 :1 ;17,5mm Vertical encoder 15 Pulses 30 DET
+EC12D1524403
+*STM U
+*NGS
+*PNM 1=A1 2=B1 3=C1 4=D1 5=E1 6=MH1 7=MH2
+*PLB 1="A1" 2="B1" 3="C1" 4="D1" 5="E1" 6="MH1" 7="MH2"
+*MXP 7
+*DFN EC12D1524403
+~!Mouser Part Number (688-EC12D1524403)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/Alps-Alpine/EC12D1524403?qs=6EGMNY9ZYDSnlYGJrjCewg%3D%3D)
+~!Manufacturer_Name (ALPS Electric)
+~!Manufacturer_Part_Number (EC12D1524403)
+~!Link Datasheet (https://www.alps.com/prod/info/E/HTML/Encoder/Incremental/EC12E/EC12D1524403.html)
+~!Height (17.5mm)
+~!3D_Model (EC12D1524403)
+EC12D1524403
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 6.1!U 7.1!U 

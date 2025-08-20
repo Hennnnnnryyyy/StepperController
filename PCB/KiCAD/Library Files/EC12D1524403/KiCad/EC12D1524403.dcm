@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP EC12D1524403
+D 17,5mm Vertical encoder 15 Pulses 30 DET
+K
+F https://www.alps.com/prod/info/E/HTML/Encoder/Incremental/EC12E/EC12D1524403.html
+$ENDCMP
+#
+#End Doc Library

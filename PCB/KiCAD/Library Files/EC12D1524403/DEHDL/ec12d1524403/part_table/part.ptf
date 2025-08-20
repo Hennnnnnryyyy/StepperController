@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'EC12D1524403'
+CLASS = DISCRETE
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "ALPS Electric", "EC12D1524403" (!) = "", "EC12D1524403", "Other", "688-EC12D1524403", "https://www.mouser.co.uk/ProductDetail/Alps-Alpine/EC12D1524403?qs=6EGMNY9ZYDSnlYGJrjCewg%3D%3D", "17,5mm Vertical encoder 15 Pulses 30 DET", "https://www.alps.com/prod/info/E/HTML/Encoder/Incremental/EC12E/EC12D1524403.html", "17.5 mm"
+END_PART
+
+END.
