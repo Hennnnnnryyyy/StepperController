@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.25,
-          "height": 2.0,
-          "width": 2.0
+          "drill": 0.0,
+          "height": 1.475,
+          "width": 0.3
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -45,7 +45,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.3
+          "min_clearance": 0.25
         }
       },
       "diff_pair_dimensions": [
@@ -56,10 +56,17 @@
         }
       ],
       "drc_exclusions": [
-        "hole_clearance|161950000|142745000|7b5de8a4-12e3-4e0a-aaee-1b1a2d58b52b|323d492c-4ab5-458b-9f46-502d3c57779e",
-        "hole_clearance|161950000|142745000|7b5de8a4-12e3-4e0a-aaee-1b1a2d58b52b|adb1bd51-00a3-4bbf-8a79-aab4f554830c",
-        "hole_clearance|168050000|142745000|41467ea1-b68d-40d9-942a-a71aa90e5874|c85d8a13-7fda-44b3-a293-e7ae54b523f4",
-        "hole_clearance|168050000|142745000|41467ea1-b68d-40d9-942a-a71aa90e5874|e52d8c57-b2ed-4956-ba11-f91e893435ab"
+        "starved_thermal|144700000|128400000|2e80caec-1c7f-4a95-b1d0-732e833f5903|5332f19b-8874-429b-9bf0-0e34a645b237|F.Cu",
+        "starved_thermal|149450000|59400000|2e80caec-1c7f-4a95-b1d0-732e833f5903|d109dbaa-4c40-4fc6-b259-85f67d82b552|F.Cu",
+        "starved_thermal|151450000|59400000|2e80caec-1c7f-4a95-b1d0-732e833f5903|b401de6f-bd75-4f3b-acae-bb00be9cd235|F.Cu",
+        "starved_thermal|151950000|59400000|2e80caec-1c7f-4a95-b1d0-732e833f5903|0a7723ce-3a0f-4a6d-a208-3651c8b8c5a4|F.Cu",
+        "starved_thermal|155700000|126600000|2e80caec-1c7f-4a95-b1d0-732e833f5903|9e150c3d-dd57-462a-9cc7-075983070f18|F.Cu",
+        "starved_thermal|158342500|73175000|2e80caec-1c7f-4a95-b1d0-732e833f5903|b2ea59fc-3353-400b-862e-c37cbbe6f5a8|F.Cu",
+        "starved_thermal|158942500|74725000|2e80caec-1c7f-4a95-b1d0-732e833f5903|959e08e0-4f14-4be4-8e40-6bfaf860bd13|F.Cu",
+        "starved_thermal|161500000|100300000|2e80caec-1c7f-4a95-b1d0-732e833f5903|7e7a7a50-b72b-4385-afc1-2c43d466abc8|F.Cu",
+        "starved_thermal|162000000|143420000|2e80caec-1c7f-4a95-b1d0-732e833f5903|0f234d5a-c369-421e-907e-fd65c63d3891|F.Cu",
+        "starved_thermal|167500000|143420000|2e80caec-1c7f-4a95-b1d0-732e833f5903|125f4295-d704-495a-b4dd-18564a169359|F.Cu",
+        "starved_thermal|167617500|82300000|2e80caec-1c7f-4a95-b1d0-732e833f5903|4d7d7fec-0921-42dd-9fe6-8ead1821cb08|F.Cu"
       ],
       "meta": {
         "version": 2
@@ -89,14 +96,14 @@
         "lib_footprint_mismatch": "warning",
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
-        "missing_courtyard": "ignore",
+        "missing_courtyard": "warning",
         "missing_footprint": "warning",
         "net_conflict": "warning",
-        "npth_inside_courtyard": "ignore",
+        "npth_inside_courtyard": "warning",
         "padstack": "warning",
-        "pth_inside_courtyard": "ignore",
+        "pth_inside_courtyard": "warning",
         "shorting_items": "error",
-        "silk_edge_clearance": "warning",
+        "silk_edge_clearance": "ignore",
         "silk_over_copper": "warning",
         "silk_overlap": "warning",
         "skew_out_of_range": "error",
@@ -179,9 +186,13 @@
       "track_widths": [
         0.0,
         0.25,
+        0.35,
         0.4,
         0.5,
-        0.75
+        0.75,
+        1.75,
+        2.0,
+        2.5
       ],
       "via_dimensions": [
         {
@@ -189,7 +200,7 @@
           "drill": 0.0
         },
         {
-          "diameter": 0.6,
+          "diameter": 0.7,
           "drill": 0.4
         }
       ],
@@ -450,6 +461,10 @@
       {
         "netclass": "Default",
         "pattern": "GND"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "BTN_Mode"
       }
     ]
   },
@@ -515,7 +530,7 @@
     ],
     [
       "ad4f520d-2a15-432d-bf39-7ca06dced5cd",
-      "ESP32"
+      "MCU"
     ],
     [
       "a476ac60-5bc5-4451-a6f6-c86702cd73e4",

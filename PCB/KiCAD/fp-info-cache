@@ -1,4 +1,4 @@
-22854814863488465
+22863598010611458
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -55328,6 +55328,13 @@ emi filter
 5
 5
 Footprints
+AFC01-S20FFC-00
+
+
+0
+22
+21
+Footprints
 HS12864G19C Display
 
 
@@ -55340,6 +55347,34 @@ MX235-5.0-04P
 
 0
 4
+4
+Footprints
+SMDRH105R
+
+
+0
+2
+2
+Footprints
+SSOP-8_5.25x5.24mm_P1.27mm-with EP
+SSOP, 8 Pin (http://www.fujitsu.com/ca/en/Images/MB85RS2MT-DS501-00023-1v0-E.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
+SSOP SO
+0
+8
+8
+Footprints
+SSOP-10_3.9x4.9mm_P1.00mm
+10-Lead SSOP, 3.9 x 4.9mm body, 1.00mm pitch (http://www.st.com/resource/en/datasheet/viper01.pdf)
+SSOP 3.9 4.9 1.00
+0
+11
+11
+Footprints
+Swtich SS-12F44-G5
+
+
+0
+5
 4
 Fuse
 FuseHolder_Blade_ATO_Littelfuse_FLR_178.6165
