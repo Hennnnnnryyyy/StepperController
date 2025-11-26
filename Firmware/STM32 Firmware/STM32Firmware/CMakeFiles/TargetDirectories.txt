@@ -1,0 +1,6 @@
+/home/panzinod/Documents/Github/StepperController/Firmware/STM32 Firmware/STM32Firmware/CMakeFiles/STM32Firmware.dir
+/home/panzinod/Documents/Github/StepperController/Firmware/STM32 Firmware/STM32Firmware/CMakeFiles/edit_cache.dir
+/home/panzinod/Documents/Github/StepperController/Firmware/STM32 Firmware/STM32Firmware/CMakeFiles/rebuild_cache.dir
+/home/panzinod/Documents/Github/StepperController/Firmware/STM32 Firmware/STM32Firmware/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+/home/panzinod/Documents/Github/StepperController/Firmware/STM32 Firmware/STM32Firmware/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/home/panzinod/Documents/Github/StepperController/Firmware/STM32 Firmware/STM32Firmware/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

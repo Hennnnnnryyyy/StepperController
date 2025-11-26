@@ -22,8 +22,8 @@
 #define BTN_FWD_PIN 38
 #define BTN_STOP_PIN 39
 #define BTN_REV_PIN 40
-#define BTN_MODE_PIN 42       // I fucked up the schematic, these are flipped
-#define BTN_CURRENT_PIN 41  // I fucked up the schematic, these are flipped
+#define BTN_MODE_PIN 42       
+#define BTN_CURRENT_PIN 41  
 
 #define ENC_A_PIN 35
 #define ENC_B_PIN 36
@@ -91,21 +91,8 @@ edgeDetector btn_current(BTN_CURRENT_PIN);
 edgeDetector btn_enc(ENC_BTN_PIN);
 
 
-// Stepper Driver Header
-class TMCstepperDriver {  // Configures TMC stepper driver
-private:
-  TMC2209Stepper drv;
-public:
-  TMCstepperDriver()
-    : drv(&Serial2, 0.1f, 0b00) {  // Serial port, sense resistor, driver address
-  }
-  void begin();                  // Initialize stepper driver
-  void setMode(bool mode);       // Set driver to 1 = StealthChop (for homing) or 0 = SpreadCycle (for printing) mode
-  void setCurrent(int current);  // Set motor current
-  void disable(bool disable);    // 1 to disable motor coils
-};
 
-TMCstepperDriver stepperDriver;  // Stepper Driver
+//TMCstepperDriver stepperDriver;  // Stepper Driver
 
 // Rest of the stuff
 SPIClass myFSPI(FSPI);  // SPI bus for OLED
@@ -238,8 +225,9 @@ byte squareSymbolBitmap[] = {
   0b11100000,
   0b10000000,
   0b11100000,
-};  // bitmap image of up arrow
+};  
 
+// bitmap image of up arrow
 byte upArrow[] = { 0x20, 0x50, 0x88 };    // bitmap image of up arrow
 byte downArrow[] = { 0x88, 0x50, 0x20 };  // bitmap image of down arrow
 
@@ -585,54 +573,7 @@ void stepperJog(int& lastMode) {
 }
 
 
-void stepperReciprocate(int& lastMode) {
-  cycleCount = 0;
-  stepper.setCurrentPosition(0);
-  bool stopNextCycle = 0;
-  int move = 0;
 
-  while (1) {
-    move = 0;
-    if (btn_fwd.risingEdge()) move = 1;
-    if (btn_rev.risingEdge()) move = -1;
-
-    if (move != 0) {
-      while (stopNextCycle == 0) {
-        stepper.moveTo(move * stepper_setDist * STEPS_PER_REV);
-        while (stepper.distanceToGo() != 0) {
-          stepper.setMaxSpeed(stepper_setSpeed * STEPS_PER_REV);
-          stepper_setAccel < 0.05 ? stepper.setAcceleration(99999 * STEPS_PER_REV) : stepper.setAcceleration(stepper_setAccel * STEPS_PER_REV);
-          stepper.run();
-          if (btn_fwd.risingEdge() || btn_rev.risingEdge()) stopNextCycle = 1;
-          if (digitalRead(BTN_STOP_PIN) || stepper_mode != lastMode) goto here; //Stops the motion immediately when hitting the stop button or changing modes
-        }
-
-        stepper.moveTo(0);
-        while (stepper.distanceToGo() != 0) {
-          stepper.setMaxSpeed(stepper_setSpeed * STEPS_PER_REV);
-          stepper_setAccel < 0.05 ? stepper.setAcceleration(99999 * STEPS_PER_REV) : stepper.setAcceleration(stepper_setAccel * STEPS_PER_REV);
-          stepper.run();
-          if (btn_fwd.risingEdge() || btn_rev.risingEdge()) stopNextCycle = 1;
-          if (digitalRead(BTN_STOP_PIN) || stepper_mode != lastMode) goto here; //Stops the motion immediately when hitting the stop button or changing modes
-        }
-
-        cycleCount++;
-      }
-    }
-here: //Stops the motion immediately when hitting the stop button or changing modes
-    stopNextCycle = 0;
-    stepper.setCurrentPosition(0);
-    stepper.moveTo(0);
-    stepper.setMaxSpeed(0);
-
-    if (stepper_mode != lastMode) {
-      stepper.setCurrentPosition(0);
-      stepper.moveTo(0);
-      stepper.setMaxSpeed(0); // Stop the motor when the mode changes
-      return;
-    }
-  }
-}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -640,7 +581,7 @@ here: //Stops the motion immediately when hitting the stop button or changing mo
 //    Stepper Driver.ino
 
 void TMCstepperDriver::begin() {  // Mode 1 for homing, mode 0 for printing
-  Serial2.begin(115200, SERIAL_8N1, NULL, STEP_UART_PIN);
+//  Serial2.begin(115200, SERIAL_8N1, NULL, STEP_UART_PIN);
 
   drv.begin();
   drv.toff(4);
@@ -668,5 +609,3 @@ void TMCstepperDriver::setCurrent(int current) {
 void TMCstepperDriver::disable(bool disable) {
   disable ? drv.toff(0) : drv.toff(4);
 }
-
-
